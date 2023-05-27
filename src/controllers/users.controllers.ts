@@ -3,6 +3,7 @@ import { createUserService } from "../services/users/createUser.service";
 import { listUsersService } from "../services/users/listUsers.service";
 import { iReturnUser } from "../schemas/user.schema";
 import { deleteUserService } from "../services/users/deleteUser.service";
+import { updateUserService } from "../services/users/updateUser.service";
 
 export const createUserController = async (request: Request, response: Response) => {
     const user: iReturnUser = await createUserService(request.body)
@@ -16,14 +17,14 @@ export const listUsersController = async (request: Request, response: Response) 
     return response.status(200).json(listUsers)
 }
 
-/* const updateUserController = async (request: Request, response: Response) => {
-    const updatedUser = await updateUserService(request.body, parseInt(request.params.id), request.user.admin, request.user.id)
+export const updateUserController = async (request: Request, response: Response) => {
+    const updatedUser = await updateUserService(request.body, parseInt(request.params.id), request.user.id)
 
     return response.status(200).json(updatedUser)
-} */
+}
 
 export const deleteUserController = async (request: Request, response: Response) => {
-    await deleteUserService(request.user.id)
+    await deleteUserService(request.user.id, parseInt(request.params.id))
 
     return response.status(204).send()
 } 

@@ -1,10 +1,11 @@
 import { Router } from "express"
-import { createUserController, deleteUserController, listUsersController } from "../controllers/users.controllers"
+import { createUserController, deleteUserController, listUsersController, updateUserController } from "../controllers/users.controllers"
 import { ensureTokenIsValid } from "../middlewares/ensureTokesIsValid.middleware"
+import { ensureUserExists } from "../middlewares/ensureUserExist.middleware"
 
 export const userRoutes: Router = Router()
 
 userRoutes.post("", createUserController)
 userRoutes.get("", ensureTokenIsValid, listUsersController)
-userRoutes.patch("/:id", )
-userRoutes.delete("", ensureTokenIsValid, deleteUserController)
+userRoutes.patch("/:id",ensureTokenIsValid, ensureUserExists, updateUserController)
+userRoutes.delete("/:id", ensureUserExists, ensureTokenIsValid, deleteUserController)

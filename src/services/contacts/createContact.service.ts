@@ -28,7 +28,14 @@ export const createContactService = async (userData: any, userId: number): Promi
 
     await contactRepository.save(contact)
 
-    const newContact = returnContactSchema.parse(contact)
+    const newContact: iReturnContact = {
+        id: contact.id,
+        name: contact.name,
+        email: contact.email,
+	    phoneNumber: contact.phoneNumber,
+	    createdAt: contact.createdAt,
+        userId: contact.user.id
+    }
 
     return newContact
 }
