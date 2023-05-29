@@ -7,6 +7,9 @@ import { handleErros } from "./errors";
 import { loginRoutes } from "./routes/login.routes";
 
 export const app: Application = express()
+const cors = require("cors")
+
+app.use(cors())
 
 app.use(express.json())
 
