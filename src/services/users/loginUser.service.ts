@@ -7,7 +7,7 @@ import { Repository } from "typeorm"
 import { iLogin, loginSchema } from "../../schemas/user.schema"
 import { User } from "../../entities/user.entity"
 
-export const loginService = async (loginData: iLogin): Promise<string> => {
+export const loginService = async (loginData: iLogin): Promise<object> => {
     const validateLoginData: iLogin = loginSchema.parse(loginData)
 
     const userRepository: Repository<User> = AppDataSource.getRepository(User)
@@ -37,5 +37,10 @@ export const loginService = async (loginData: iLogin): Promise<string> => {
         }
     )
 
-    return token
+    const userToken = {
+        ...user,
+        token: token
+    }
+
+    return userToken
 }
