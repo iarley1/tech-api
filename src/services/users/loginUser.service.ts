@@ -37,8 +37,10 @@ export const loginService = async (loginData: iLogin): Promise<object> => {
         }
     )
 
+    const { password, ...newUser } = user
+
     const userToken = {
-        ...user,
+        ...newUser,
         token: token
     }
 
