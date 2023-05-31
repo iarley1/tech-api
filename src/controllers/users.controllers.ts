@@ -19,7 +19,7 @@ export const listUsersController = async (request: Request, response: Response) 
 }
 
 export const listUserByIdController = async (request: Request, response: Response) => {
-    const user = await listUserByIdService(parseInt(request.user.id))
+    const user = await listUserByIdService(request.user.id)
 
     return response.status(200).json(user)
 }
