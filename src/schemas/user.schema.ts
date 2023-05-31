@@ -37,3 +37,4 @@ export type iReturnUser = z.infer<typeof returnUserSchema>
 export type iReturnUserArray = z.infer<typeof returnUserSchemaArray>
 export type iUserUpdate = z.infer<typeof userUpdateSchema>
 export type iLogin = z.infer<typeof loginSchema>
+export type iReturnGetUser = z.infer<typeof returnUserContactSchema>
