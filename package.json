@@ -30,6 +30,7 @@
     "jsonwebtoken": "^9.0.0",
     "pg": "^8.11.0",
     "reflect-metadata": "^0.1.13",
+    "ts-migrate": "^0.1.35",
     "typeorm": "^0.3.16",
     "zod": "^3.21.4"
   },
